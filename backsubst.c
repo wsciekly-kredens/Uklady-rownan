@@ -14,7 +14,7 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 	double substract=0;
 	for (i = x->r; i>0; i--) 
 	{			
-		if (mat->data[i][j]=0)
+		if (mat->data[i][j]==0)
 		return 1;
 			int m=i;
 			int n;	
