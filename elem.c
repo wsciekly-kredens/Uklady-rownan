@@ -15,7 +15,7 @@ int eliminate_glow(Matrix *mat, Matrix *b){
 	for(int i = 0; i<c-1;i++){
 		int max = i;
 		double elemmax = fabs(mat->data[i][i]);
-		for(int j = 0; j<r; j++){
+		for(int j = i+1; j<r; j++){
 			if( mat->data[i][i] < 0.0000001)
 				return 1;
 			if(fabs(mat->data[j][i] > elemmax)){
@@ -31,7 +31,7 @@ int eliminate_glow(Matrix *mat, Matrix *b){
 				b->data[max] = tmp2;
 			}
 			double q = mat->data[j][i]/mat->data[i][i];
-			for(int k = 1; k<r;k++){
+			for(int k = i; k<r;k++){
 				mat->data[j][k] -= q * mat->data[k][k];
 			}
 			b->data[j][0] -= q*b->data[i][0];

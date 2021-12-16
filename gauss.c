@@ -12,12 +12,12 @@ int eliminate(Matrix *mat, Matrix *b){
 	if(r<=0||c<=0)
 		return -1;
 	for(int i = 0; i<c-1;i++){
-		for(int j = 0; j<r; j++){
+		for(int j = i+1; j<r; j++){
 			if( mat->data[i][i] < 0.0000001)
 				return 1;
 			double q = mat->data[j][i]/mat->data[i][i];
-			for(int k = 1; k<r;k++){
-				mat->data[j][k] -= q * mat->data[k][k];
+			for(int k = i; k<r;k++){
+				mat->data[j][k] -= q * mat->data[i][k];
 			}
 			b->data[j][0] -= q*b->data[i][0];
 		}
